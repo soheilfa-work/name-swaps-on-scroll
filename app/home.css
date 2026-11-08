@@ -1,0 +1,165 @@
+:root {
+  --c-black: #050505;
+  --c-ink: #f4f4f4;
+  --c-gray: #bdbdbd;
+}
+
+:root.is-day {
+  --c-black: #f3efe6;
+  --c-ink: #161616;
+  --c-gray: #3a3a3a;
+}
+
+.stage {
+  background: var(--c-black);
+  color: var(--c-gray);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  padding: 10px;
+  background: var(--c-black);
+  overflow: hidden;
+  user-select: none;
+}
+
+.spotlight-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100%;
+  color: var(--night, var(--c-ink));
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+:root.is-day .name {
+  color: var(--day, var(--night, var(--c-ink)));
+}
+
+.name.is-current {
+  transform: scaleY(1);
+  transform-origin: center top;
+}
+
+.name svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.visual {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 8;
+  width: clamp(148px, 20vw, 280px);
+  transform: scale(0);
+  transform-origin: left bottom;
+  will-change: transform;
+}
+
+.visual.is-current {
+  transform: scale(1);
+}
+
+.visual-frame {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #111;
+}
+
+:root.is-day .visual-frame {
+  background: #ddd6cc;
+}
+
+.visual-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.visual-caption {
+  margin: 5px 0 0;
+  color: var(--c-ink);
+  font-size: 12px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.scroll-track {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+}
+
+.theme-toggle {
+  position: fixed;
+  z-index: 20;
+  top: 14px;
+  right: 14px;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--c-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-ink);
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--c-ink);
+  color: var(--c-black);
+}
+
+@media (max-width: 720px) {
+  .spotlight {
+    padding: 8px;
+  }
+
+  .name {
+    width: 86%;
+  }
+
+  .visual {
+    width: clamp(132px, 42vw, 210px);
+  }
+
+  .visual-caption {
+    font-size: 11px;
+  }
+}
